@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "973237328064",
+    "project_id": "workouter-53df5",
+    "storage_bucket": "workouter-53df5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973237328064:android:16628b003df5ca19583525",
+        "android_client_info": {
+          "package_name": "com.example.workouterapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973237328064-dimh28930gn1o49kmcboj0pintb21ss0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbhbLVEqCdebEMegOI3R-O0Uds1p4dwEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973237328064-dimh28930gn1o49kmcboj0pintb21ss0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
