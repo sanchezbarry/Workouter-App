@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:workouterapp/auth/auth_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'forgot_pw_page.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -59,6 +60,36 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  Widget _userUid() {
+    return Text(user.email ?? 'User email',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 22,
+        ));
+  }
+
+  Widget _resetPassword() {
+    return Material(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
+      clipBehavior: Clip.antiAlias,
+      child: MaterialButton(
+        height: 50,
+        color: Colors.blueGrey,
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ForgotPasswordPage();
+          }));
+        },
+        child: Text('Forgot Password',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontSize: 16,
+            )),
+      ),
+    );
+  }
+
   Widget _signOutButton() {
     return Material(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100.0)),
@@ -71,7 +102,7 @@ class _ProfileState extends State<Profile> {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 16,
             )),
       ),
     );
@@ -100,7 +131,12 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _icon(),
+              Image.asset('assets/images/Profilepic-pana.png'),
+              _smallbox(),
+              _userUid(),
+              _smallbox(),
+              _smallbox(),
+              _resetPassword(),
               _smallbox(),
               _smallbox(),
               _signOutButton(),

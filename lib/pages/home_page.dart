@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey,
-          title: Text(user.email!, style: TextStyle(fontSize: 15)),
+          title: Text('Workouter', style: TextStyle(fontSize: 18)),
           actions: [
             GestureDetector(
                 onTap: () {

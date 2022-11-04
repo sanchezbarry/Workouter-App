@@ -52,6 +52,14 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
                     labelText: 'Sets',
                   ),
                 ),
+                TextField(
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  controller: _exerciseRepsController,
+                  decoration: const InputDecoration(
+                    labelText: 'Reps',
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -61,12 +69,18 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
                     final String exerciseName = _exerciseNameController.text;
                     final double? sets =
                         double.tryParse(_exerciseSetsController.text);
+                    final double? reps =
+                        double.tryParse(_exerciseRepsController.text);
                     if (sets != null) {
-                      await _workouts
-                          .add({"exerciseName": exerciseName, "sets": sets});
+                      await _workouts.add({
+                        "exerciseName": exerciseName,
+                        "sets": sets,
+                        "reps": reps
+                      });
 
                       _exerciseNameController.text = '';
                       _exerciseSetsController.text = '';
+                      _exerciseRepsController.text = '';
                       Navigator.of(context).pop();
                     }
                   },
@@ -82,6 +96,7 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
     if (documentSnapshot != null) {
       _exerciseNameController.text = documentSnapshot['exerciseName'];
       _exerciseSetsController.text = documentSnapshot['sets'].toString();
+      _exerciseRepsController.text = documentSnapshot['reps'].toString();
     }
 
     await showModalBottomSheet(
@@ -110,6 +125,14 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
                     labelText: 'Sets',
                   ),
                 ),
+                TextField(
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  controller: _exerciseRepsController,
+                  decoration: const InputDecoration(
+                    labelText: 'Reps',
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -119,12 +142,17 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
                     final String exerciseName = _exerciseNameController.text;
                     final double? sets =
                         double.tryParse(_exerciseSetsController.text);
+                    final double? reps =
+                        double.tryParse(_exerciseRepsController.text);
                     if (sets != null) {
-                      await _workouts
-                          .doc(documentSnapshot!.id)
-                          .update({"exerciseName": exerciseName, "sets": sets});
+                      await _workouts.doc(documentSnapshot!.id).update({
+                        "exerciseName": exerciseName,
+                        "sets": sets,
+                        "reps": reps
+                      });
                       _exerciseNameController.text = '';
                       _exerciseSetsController.text = '';
+                      _exerciseRepsController.text = '';
                       Navigator.of(context).pop();
                     }
                   },
@@ -140,7 +168,7 @@ class _WorkoutBuilerPageState extends State<WorkoutBuilerPage> {
     await _workouts.doc(productId).delete();
 
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('You have successfully deleted a product')));
+        content: Text('You have successfully deleted an exercise')));
   }
 
   @override
